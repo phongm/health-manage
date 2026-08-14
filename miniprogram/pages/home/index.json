@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "今日吃什么",
+  "usingComponents": {
+    "tabbar": "/components/tabbar/index"
+  }
+}

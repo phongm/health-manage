@@ -1,0 +1,10 @@
+.row { display: flex; gap: 12rpx; flex-wrap: wrap; }
+.chip { padding: 12rpx 24rpx; border-radius: 999rpx; background: #eef3ef; color: #3d5348; }
+.chip.on { background: #1f6f4a; color: #fff; }
+.title { font-size: 30rpx; font-weight: 700; margin-bottom: 16rpx; }
+.hit, .item { display: flex; justify-content: space-between; padding: 20rpx 0; border-bottom: 1rpx solid #eef3ef; }
+.del { color: #b45309; margin-left: 16rpx; }
+.mini { margin: 16rpx 0 0; flex: 1; }
+.ghost { background: #eef3ef; color: #1f6f4a; border-radius: 999rpx; }
+button { margin: 24rpx; }
+input { background: #f6f7f4; padding: 16rpx 20rpx; border-radius: 12rpx; margin-top: 12rpx; }

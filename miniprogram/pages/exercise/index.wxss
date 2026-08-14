@@ -1,0 +1,9 @@
+.title { font-size: 32rpx; font-weight: 700; margin-bottom: 16rpx; }
+.field { display: flex; justify-content: space-between; padding: 20rpx 0; border-bottom: 1rpx solid #eef3ef; }
+.field input { text-align: right; }
+.row { display: flex; gap: 12rpx; margin: 24rpx 0; }
+.chip { padding: 12rpx 28rpx; border-radius: 999rpx; background: #eef3ef; }
+.chip.on { background: #1f6f4a; color: #fff; }
+.item { display: flex; justify-content: space-between; padding: 16rpx 0; }
+.del { color: #b45309; margin-left: 16rpx; }
+button { margin: 24rpx 0; }

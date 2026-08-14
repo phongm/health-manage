@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "我的",
+  "usingComponents": {
+    "tabbar": "/components/tabbar/index"
+  }
+}

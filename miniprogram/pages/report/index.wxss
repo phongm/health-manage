@@ -1,0 +1,5 @@
+.title { font-size: 32rpx; font-weight: 700; margin-bottom: 12rpx; }
+.kcal { font-size: 56rpx; font-weight: 700; color: #1f6f4a; margin: 16rpx 0; }
+.unit { font-size: 26rpx; font-weight: 500; }
+.item { display: flex; justify-content: space-between; padding: 16rpx 0; border-bottom: 1rpx solid #eef3ef; }
+.pad { margin: 0 24rpx 48rpx; }

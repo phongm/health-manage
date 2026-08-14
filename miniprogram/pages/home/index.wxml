@@ -1,0 +1,70 @@
+<view class="page has-tab">
+  <view class="card" wx:if="{{!error}}">
+    <view class="muted">今日剩余</view>
+    <view class="kcal">{{remainingKcal}} <text class="unit">kcal</text></view>
+    <view class="muted">已记 {{intakeKcal}} / 目标 {{targetKcal}}</view>
+    <view class="muted">蛋白质 {{protein}} / {{proteinTarget}} g · 碳水 {{cho}} / {{choTarget}} g</view>
+    <view class="muted">脂肪 {{fat}} / {{fatTarget}} g · 纤维 {{fiber}} / {{fiberTarget}} g</view>
+    <view class="muted">钠 {{sodium}} / {{sodiumTarget}} mg（上限）</view>
+    <view class="muted" wx:if="{{exerciseCredited}}">运动已计入 {{exerciseCredited}} kcal（按 70% 折算）</view>
+    <view wx:if="{{excluded}}" class="warn">{{excludeText}}</view>
+  </view>
+  <view class="card" wx:else>{{error}}</view>
+
+  <view class="card" wx:if="{{!excluded}}">
+    <view class="title">下一餐 · {{nextMealLabel}}</view>
+    <view class="row wrap" wx:if="{{!excluded}}">
+      <view class="chip {{scene === 'takeout' ? 'on' : ''}}" data-value="takeout" bindtap="onScene">外卖</view>
+      <view class="chip {{scene === 'canteen' ? 'on' : ''}}" data-value="canteen" bindtap="onScene">食堂</view>
+      <view class="chip {{scene === 'homecook' ? 'on' : ''}}" data-value="homecook" bindtap="onScene">自己做</view>
+    </view>
+    <view wx:if="{{recLoading}}" class="muted">正在生成参考方案…</view>
+    <view wx:elif="{{recError}}" class="warn">{{recError}}</view>
+    <block wx:elif="{{rec}}">
+      <view class="item" wx:for="{{rec.items}}" wx:key="food_id">
+        <view>
+          <view>{{item.name}} · {{item.portion_label || item.grams + 'g'}}</view>
+          <view class="muted">{{item.nutrients.energy_kcal}} kcal · 蛋白 {{item.nutrients.protein_g}}g</view>
+        </view>
+        <view class="swap" wx:if="{{item.swappable}}" data-id="{{item.food_id}}" bindtap="swapItem">换一换</view>
+      </view>
+      <view class="muted" wx:for="{{rec.reasons}}" wx:key="*this">{{item}}</view>
+      <view class="muted">还可换 {{rec.swaps_remaining}} 次</view>
+      <view class="row">
+        <button class="btn-primary mini" loading="{{accepting}}" bindtap="acceptRec">一键记入</button>
+        <button class="mini ghost" bindtap="ignoreRec">我自己记</button>
+      </view>
+    </block>
+  </view>
+
+  <view class="card" wx:if="{{avoid.length && !excluded}}">
+    <view class="title">今天建议避开</view>
+    <view class="avoid {{item.level}}" wx:for="{{avoid}}" wx:key="title">
+      <view>{{item.title}}</view>
+      <view class="muted">{{item.reason}}</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="title">各餐</view>
+    <view class="meal" wx:for="{{meals}}" wx:key="key">
+      <text>{{item.label}}</text>
+      <text class="muted">{{item.logged ? item.kcal + ' kcal' : '未记'}}</text>
+    </view>
+  </view>
+
+  <view class="card" wx:if="{{items.length}}">
+    <view class="title">今日记录</view>
+    <view class="item" wx:for="{{items}}" wx:key="id">
+      <view>
+        <view>{{item.food_name}} · {{item.portion_label || item.grams + 'g'}}</view>
+        <view class="muted">{{item.nutrients.energy_kcal}} kcal</view>
+      </view>
+      <view class="del" data-id="{{item.id}}" bindtap="removeItem">删除</view>
+    </view>
+  </view>
+
+  <view class="disclaimer">{{disclaimer}}</view>
+  <button class="btn-primary" bindtap="goLog">记一笔</button>
+  <tabbar active="home" />
+</view>

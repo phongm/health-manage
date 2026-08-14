@@ -1,0 +1,7 @@
+<view class="wrap">
+  <view wx:if="{{loading}}" class="muted">正在进入…</view>
+  <view wx:else class="card">
+    <view>{{error}}</view>
+    <button class="btn-primary" bindtap="retry">重试</button>
+  </view>
+</view>

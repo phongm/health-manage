@@ -1,0 +1,4 @@
+.wrap {
+  padding: 80rpx 32rpx;
+  text-align: center;
+}

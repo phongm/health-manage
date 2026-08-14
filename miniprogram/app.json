@@ -1,0 +1,36 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/onboarding/index",
+    "pages/home/index",
+    "pages/log/index",
+    "pages/me/index",
+    "pages/weight/index",
+    "pages/exercise/index",
+    "pages/settings/index",
+    "pages/report/index",
+    "pages/plan/index",
+    "pages/contribute/index",
+    "pages/privacy/index",
+    "pages/membership/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "今日吃什么",
+    "navigationBarBackgroundColor": "#1F6F4A",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F6F7F4"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.record": {
+      "desc": "用于把语音转成文字后记录饮食"
+    }
+  },
+  "plugins": {
+    "WechatSI": {
+      "version": "0.3.5",
+      "provider": "wx069ba97219f66c71"
+    }
+  }
+}

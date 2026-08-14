@@ -1,0 +1,19 @@
+<view class="page has-tab">
+  <view class="card">
+    <view class="title">我的</view>
+    <view class="muted">目标 {{targetKcal}} kcal / 天</view>
+    <view class="warn" wx:if="{{excluded}}">当前仅提供记录功能，暂不提供饮食建议。</view>
+  </view>
+  <view class="card">
+    <view class="item" bindtap="go" data-url="/pages/weight/index">体重趋势</view>
+    <view class="item" bindtap="go" data-url="/pages/exercise/index">运动记录</view>
+    <view class="item" bindtap="go" data-url="/pages/settings/index">偏好与忌口</view>
+    <view class="item" bindtap="go" data-url="/pages/report/index">本周统计</view>
+    <view class="item" bindtap="go" data-url="/pages/plan/index">多日参考食谱</view>
+    <view class="item" bindtap="go" data-url="/pages/membership/index">会员与配额</view>
+    <view class="item" bindtap="go" data-url="/pages/contribute/index">补充食物</view>
+    <view class="item" bindtap="exportData">导出我的数据</view>
+    <view class="item" bindtap="go" data-url="/pages/privacy/index">隐私与免责声明</view>
+  </view>
+  <tabbar active="me" />
+</view>

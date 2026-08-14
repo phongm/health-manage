@@ -337,3 +337,21 @@ Base URL：`https://<已备案域名>/api/health/v1`
 | 全局 | 每 IP 每分钟 60 次 | Nginx 或应用层 |
 
 **配额计数必须在云端**。放本地会被用户清缓存绕过。
+
+## 11. 周报、导出与会员
+
+### GET /report/weekly
+
+返回近 7 日记录天数、日均摄入、营养达成率、纤维/微量元素（仅统计食物库中已有字段，缺失不按 0 计）、饮食结构（按食物分类）和体重变化。所有文案为记录与统计参考。
+
+### GET /export
+
+导出当前用户的档案、偏好、摄入、体重和运动记录。
+
+### GET /membership
+
+```jsonc
+{ "plan": "free", "payment_enabled": false, "quotas": { "recommend_daily": 20, "swap_per_meal": 3, "parse_image_daily": 3, "plan_days": 3 } }
+```
+
+虚拟支付尚未接入。`POST /membership/checkout` 返回 `4001`。

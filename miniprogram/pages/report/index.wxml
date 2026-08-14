@@ -1,0 +1,45 @@
+<view class="page">
+  <view class="card">
+    <view class="title">本周记录统计</view>
+    <view class="muted">{{start}} ~ {{end}} · 记了 {{loggedDays}} 天</view>
+    <view class="kcal">{{avgKcal}} <text class="unit">kcal / 日均</text></view>
+    <view class="muted">目标 {{targetKcal}} kcal · 蛋白质 {{protein}} / {{proteinTarget}} g</view>
+    <view class="muted">{{weightDelta}}</view>
+  </view>
+  <view class="card" wx:if="{{achievement.length}}">
+    <view class="title">营养达成</view>
+    <view class="item" wx:for="{{achievement}}" wx:key="key">
+      <text>{{item.label}}{{item.cap ? '（上限）' : ''}}</text>
+      <text class="muted">{{item.intake}} / {{item.target}} · {{item.ratio * 100}}%</text>
+    </view>
+  </view>
+  <view class="card" wx:if="{{micros.length}}">
+    <view class="title">纤维与微量元素</view>
+    <view class="item" wx:for="{{micros}}" wx:key="key">
+      <text>{{item.label}}</text>
+      <text class="muted">{{item.unknown ? '食物库暂无该项' : (item.intake + (item.target != null ? ' / ' + item.target : ''))}}</text>
+    </view>
+  </view>
+  <view class="card" wx:if="{{structure.length}}">
+    <view class="title">饮食结构</view>
+    <view class="item" wx:for="{{structure}}" wx:key="category">
+      <text>{{item.label}}</text>
+      <text class="muted">{{item.count}} 次 · {{item.pct * 100}}%</text>
+    </view>
+  </view>
+  <view class="card">
+    <view class="title">每日</view>
+    <view class="item" wx:for="{{days}}" wx:key="date">
+      <text>{{item.date}}</text>
+      <text class="muted">{{item.logged ? item.kcal + ' kcal' : '未记'}}</text>
+    </view>
+  </view>
+  <view class="card" wx:if="{{topFoods.length}}">
+    <view class="title">常吃</view>
+    <view class="item" wx:for="{{topFoods}}" wx:key="name">
+      <text>{{item.name}}</text>
+      <text class="muted">{{item.count}} 次</text>
+    </view>
+  </view>
+  <view class="muted pad">{{disclaimer}}</view>
+</view>

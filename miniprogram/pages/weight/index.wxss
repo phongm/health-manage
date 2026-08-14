@@ -1,0 +1,9 @@
+.title { font-size: 32rpx; font-weight: 700; margin-bottom: 16rpx; }
+.field { display: flex; justify-content: space-between; align-items: center; }
+.field input { text-align: right; }
+.chart { display: flex; align-items: flex-end; gap: 8rpx; height: 220rpx; margin-top: 24rpx; overflow-x: auto; }
+.bar-wrap { display: flex; flex-direction: column; align-items: center; min-width: 40rpx; }
+.bar { width: 24rpx; background: #1f6f4a; border-radius: 8rpx 8rpx 0 0; }
+.tiny { font-size: 18rpx; margin-top: 8rpx; }
+.pad { margin: 0 24rpx 48rpx; }
+button { margin: 24rpx 0 12rpx; }

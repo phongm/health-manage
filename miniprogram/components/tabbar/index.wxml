@@ -1,0 +1,5 @@
+<view class="bar">
+  <view class="item {{active === 'home' ? 'on' : ''}}" data-url="/pages/home/index" bindtap="go">今日</view>
+  <view class="item {{active === 'log' ? 'on' : ''}}" data-url="/pages/log/index" bindtap="go">记一笔</view>
+  <view class="item {{active === 'me' ? 'on' : ''}}" data-url="/pages/me/index" bindtap="go">我的</view>
+</view>

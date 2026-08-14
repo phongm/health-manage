@@ -1,0 +1,15 @@
+<view class="page">
+  <view class="card">
+    <view class="title">当前方案</view>
+    <view>{{plan === 'free' ? '免费' : plan}}</view>
+    <view class="muted">{{note}}</view>
+  </view>
+  <view class="card">
+    <view class="title">免费配额</view>
+    <view class="item" wx:for="{{quotas}}" wx:key="key">
+      <text>{{item.key}}</text>
+      <text class="muted">{{item.value}}</text>
+    </view>
+  </view>
+  <view class="muted pad">虚拟支付尚未接入，不会向你收费。多端原生应用也不在当前版本范围内，接口已按 HTTPS API 设计，便于以后复用。</view>
+</view>

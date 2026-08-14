@@ -1,0 +1,21 @@
+<view class="page">
+  <view class="card">
+    <view class="title">今日体重</view>
+    <view class="field">
+      <text>公斤</text>
+      <input type="digit" placeholder="例如 60.2" value="{{weight}}" bindinput="onWeight" />
+    </view>
+    <button class="btn-primary" bindtap="save">记录</button>
+    <view class="muted">{{trend}}</view>
+  </view>
+  <view class="card" wx:if="{{bars.length}}">
+    <view class="title">7 日均线</view>
+    <view class="chart">
+      <view class="bar-wrap" wx:for="{{bars}}" wx:key="date">
+        <view class="bar" style="height: {{item.height}}rpx;"></view>
+        <view class="muted tiny">{{item.date}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="muted pad">周均值比单日体重更能反映趋势。以上为记录与统计参考。</view>
+</view>

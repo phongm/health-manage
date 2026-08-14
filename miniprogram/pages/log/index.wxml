@@ -1,0 +1,62 @@
+<view class="page has-tab">
+  <view class="card">
+    <view class="row">
+      <view
+        wx:for="{{mealTypes}}"
+        wx:key="key"
+        class="chip {{mealType === item.key ? 'on' : ''}}"
+        data-key="{{item.key}}"
+        bindtap="onMeal"
+      >{{item.label}}</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="title">一句话记录</view>
+    <input placeholder="例如：两个鸡蛋一碗米饭一杯豆浆" value="{{sentence}}" bindinput="onSentence" />
+    <view class="row">
+      <button class="btn-primary mini" bindtap="parseSentence">解析并加入</button>
+      <button class="mini ghost" bindtap="startVoice">{{listening ? '正在听…' : '语音转文字'}}</button>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="title">拍照记录</view>
+    <view class="muted">当前未接视觉模型。先写备注，再选图，我们按文字解析并请你确认份量。</view>
+    <input placeholder="备注：例如番茄炒蛋、米饭" value="{{imageHint}}" bindinput="onImageHint" />
+    <button class="mini ghost" bindtap="pickImage">选图并解析</button>
+  </view>
+
+  <view class="card">
+    <view class="title">搜索食物</view>
+    <input placeholder="鸡胸、米饭、番茄炒蛋" value="{{q}}" bindinput="onQuery" />
+    <view class="hit" wx:for="{{results}}" wx:key="food_id" data-source="results" data-index="{{index}}" bindtap="pickFood">
+      {{item.name}}
+      <text class="muted">{{item.nutrients_per_100g.energy_kcal}} kcal / 100g</text>
+    </view>
+  </view>
+
+  <view class="card" wx:if="{{!results.length}}">
+    <view class="title">常用</view>
+    <view class="hit" wx:for="{{hot}}" wx:key="food_id" data-source="hot" data-index="{{index}}" bindtap="pickFood">
+      {{item.name}}
+    </view>
+  </view>
+
+  <view class="card" wx:if="{{cart.length}}">
+    <view class="title">本餐待提交</view>
+    <view class="item" wx:for="{{cart}}" wx:key="food_id">
+      <view>
+        <view>{{item.name}} · {{item.portion_label}}</view>
+        <view class="muted" wx:if="{{item.need_confirm}}">待确认份量</view>
+      </view>
+      <view>
+        <text class="del" wx:if="{{item.need_confirm}}" data-index="{{index}}" bindtap="confirmCart">选份量</text>
+        <text class="del" data-index="{{index}}" bindtap="removeCart">移除</text>
+      </view>
+    </view>
+  </view>
+
+  <button class="btn-primary" loading="{{saving}}" bindtap="submit">记入今日</button>
+  <tabbar active="log" />
+</view>

@@ -1,0 +1,95 @@
+<view class="page">
+  <view wx:if="{{step === 1}}">
+    <view class="card">
+      <view class="title">先算你的每日目标热量</view>
+      <view class="row">
+        <view class="chip {{gender === 1 ? 'on' : ''}}" data-value="1" bindtap="onGender">男</view>
+        <view class="chip {{gender === 2 ? 'on' : ''}}" data-value="2" bindtap="onGender">女</view>
+      </view>
+      <view class="field">
+        <text>出生年份</text>
+        <input type="number" data-field="birthYear" value="{{birthYear}}" bindinput="onField" />
+      </view>
+      <view class="field">
+        <text>身高 cm</text>
+        <input type="digit" data-field="heightCm" value="{{heightCm}}" bindinput="onField" />
+      </view>
+      <view class="field">
+        <text>体重 kg</text>
+        <input type="digit" data-field="weightKg" value="{{weightKg}}" bindinput="onField" />
+      </view>
+      <picker range="{{activityLabels}}" bindchange="onActivity">
+        <view class="field">
+          <text>活动水平</text>
+          <text class="muted">{{activityLabel}}</text>
+        </view>
+      </picker>
+      <view class="kcal">{{targetKcal}} kcal / 天</view>
+      <view wx:for="{{warningTexts}}" wx:key="*this" class="warn">{{item}}</view>
+      <view class="muted" style="margin-top: 24rpx;">是否有以下情况？（用于判断能否提供饮食参考）</view>
+      <view class="row wrap">
+        <view
+          wx:for="{{healthOptions}}"
+          wx:key="key"
+          class="chip {{item.on ? 'on' : ''}}"
+          data-key="{{item.key}}"
+          bindtap="toggleHealth"
+        >{{item.label}}</view>
+      </view>
+      <view wx:if="{{excluded}}" class="warn">{{excludeText}}</view>
+    </view>
+    <button class="btn-primary" bindtap="next">下一步：口味与场景</button>
+  </view>
+
+  <view wx:else>
+    <view class="card">
+      <view class="title">你通常怎么吃饭？</view>
+      <view class="row">
+        <view class="chip {{sceneDefault === 'takeout' ? 'on' : ''}}" data-value="takeout" bindtap="onScene">外卖</view>
+        <view class="chip {{sceneDefault === 'canteen' ? 'on' : ''}}" data-value="canteen" bindtap="onScene">食堂</view>
+        <view class="chip {{sceneDefault === 'homecook' ? 'on' : ''}}" data-value="homecook" bindtap="onScene">自己做</view>
+      </view>
+      <view class="muted">饮食类型</view>
+      <view class="row wrap">
+        <view class="chip {{dietType === 'omnivore' ? 'on' : ''}}" data-value="omnivore" bindtap="onDiet">普通</view>
+        <view class="chip {{dietType === 'pescatarian' ? 'on' : ''}}" data-value="pescatarian" bindtap="onDiet">鱼素</view>
+        <view class="chip {{dietType === 'vegetarian' ? 'on' : ''}}" data-value="vegetarian" bindtap="onDiet">素食</view>
+        <view class="chip {{dietType === 'vegan' ? 'on' : ''}}" data-value="vegan" bindtap="onDiet">纯素</view>
+      </view>
+      <view class="muted">辣度</view>
+      <view class="row wrap">
+        <view class="chip {{spiceLevel === 0 ? 'on' : ''}}" data-value="0" bindtap="onSpice">不吃辣</view>
+        <view class="chip {{spiceLevel === 1 ? 'on' : ''}}" data-value="1" bindtap="onSpice">微辣</view>
+        <view class="chip {{spiceLevel === 2 ? 'on' : ''}}" data-value="2" bindtap="onSpice">中辣</view>
+        <view class="chip {{spiceLevel === 3 ? 'on' : ''}}" data-value="3" bindtap="onSpice">嗜辣</view>
+      </view>
+      <view class="muted">不吃的肉类</view>
+      <view class="row wrap">
+        <view
+          wx:for="{{meatOptions}}"
+          wx:key="key"
+          class="chip {{item.on ? 'on' : ''}}"
+          data-key="{{item.key}}"
+          bindtap="toggleMeat"
+        >{{item.label}}</view>
+      </view>
+      <view class="muted">过敏原（硬性排除）</view>
+      <view class="row wrap">
+        <view
+          wx:for="{{allergenOptions}}"
+          wx:key="key"
+          class="chip {{item.on ? 'on' : ''}}"
+          data-key="{{item.key}}"
+          bindtap="toggleAllergen"
+        >{{item.label}}</view>
+      </view>
+      <view class="field">
+        <text>忌口</text>
+        <input placeholder="香菜、内脏" value="{{avoidText}}" bindinput="onAvoid" />
+      </view>
+      <view class="muted">这一步决定第一餐推荐能不能吃得下去。</view>
+    </view>
+    <button class="ghost" bindtap="back">返回修改目标</button>
+    <button class="btn-primary" loading="{{saving}}" bindtap="submit">{{excluded ? '进入记录' : '查看下一餐推荐'}}</button>
+  </view>
+</view>

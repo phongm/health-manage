@@ -1,0 +1,10 @@
+<view class="page">
+  <view class="card">
+    <view class="title">隐私政策与免责声明</view>
+    <view class="p">本小程序用于个人饮食与体重的记录、统计与参考，不针对任何疾病提供干预方案。</view>
+    <view class="p">我们会收集你主动填写的身高、体重、年龄、饮食与运动记录，用于计算热量目标并生成下一餐参考方案。数据保存在云端，换设备后可恢复。</view>
+    <view class="p">慢病、孕产、哺乳、未成年及低体重用户仅可使用记录功能，不会获得饮食建议。特殊情况请咨询专业人士。</view>
+    <view class="p">食物营养数据来自公开数据与自行整理的配方估算，存在误差，仅供参考。</view>
+    <view class="p">{{disclaimer}}</view>
+  </view>
+</view>

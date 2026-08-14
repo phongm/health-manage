@@ -1,0 +1,17 @@
+.DS_Store
+.env
+.env.local
+*.pyc
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.venv/
+.uv-python/
+server/.venv/
+node_modules/
+miniprogram/node_modules/
+dist/
+*.log
+.idea/
+.vscode/
+miniprogram/miniprogram_npm/

@@ -1,0 +1,5 @@
+.title { font-size: 32rpx; font-weight: 700; margin-bottom: 12rpx; }
+.field { display: flex; justify-content: space-between; padding: 20rpx 0; border-bottom: 1rpx solid #eef3ef; }
+.field input { text-align: right; }
+.ghost { background: #eef3ef; color: #1f6f4a; border-radius: 999rpx; margin: 24rpx 0 0; }
+button { margin: 24rpx 0; }

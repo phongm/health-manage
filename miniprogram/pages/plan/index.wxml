@@ -1,0 +1,16 @@
+<view class="page">
+  <view class="card">
+    <view class="title">多日参考食谱</view>
+    <view class="muted">免费最多 3 天，后续可能作为会员功能。方案仅供参考。</view>
+  </view>
+  <view class="card" wx:if="{{loading}}">正在生成…</view>
+  <view class="card" wx:elif="{{error}}">{{error}}</view>
+  <view class="card" wx:for="{{days}}" wx:for-item="day" wx:for-index="dayIndex" wx:key="date">
+    <view class="title">{{day.date}}</view>
+    <view wx:for="{{day.meals}}" wx:for-item="meal" wx:for-index="mealIndex" wx:key="rec_id" class="meal">
+      <view class="muted">{{meal.meal_label}}</view>
+      <view wx:for="{{meal.items}}" wx:key="food_id">{{item.name}} · {{item.portion_label}}</view>
+      <button class="mini" data-day="{{dayIndex}}" data-meal="{{mealIndex}}" bindtap="accept">记入这一餐</button>
+    </view>
+  </view>
+</view>

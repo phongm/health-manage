@@ -1,0 +1,16 @@
+.kcal { font-size: 72rpx; font-weight: 700; color: #1f6f4a; margin: 12rpx 0 16rpx; }
+.unit { font-size: 28rpx; font-weight: 500; }
+.title { font-size: 32rpx; font-weight: 700; margin-bottom: 16rpx; }
+.meal, .item { display: flex; justify-content: space-between; align-items: center; padding: 16rpx 0; border-bottom: 1rpx solid #eef3ef; }
+.del, .swap { color: #b45309; font-size: 24rpx; }
+.warn { color: #b45309; margin-top: 24rpx; }
+.row { display: flex; gap: 16rpx; margin-top: 16rpx; }
+.wrap { flex-wrap: wrap; }
+.chip { padding: 8rpx 20rpx; border-radius: 999rpx; background: #eef3ef; font-size: 24rpx; }
+.chip.on { background: #1f6f4a; color: #fff; }
+.mini { margin: 0; flex: 1; }
+.ghost { background: #eef3ef; color: #1f6f4a; border-radius: 999rpx; }
+.avoid { padding: 12rpx 0; }
+.avoid.alert { color: #b45309; }
+.disclaimer { margin: 8rpx 24rpx 0; color: #6b7c74; font-size: 22rpx; }
+button { margin: 24rpx; }

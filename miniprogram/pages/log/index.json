@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "记一笔",
+  "usingComponents": {
+    "tabbar": "/components/tabbar/index"
+  }
+}

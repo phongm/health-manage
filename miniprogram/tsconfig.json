@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitAny": true,
+    "module": "CommonJS",
+    "target": "ES2018",
+    "lib": ["ES2018"],
+    "types": ["miniprogram-api-typings"],
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@core/*": ["core/*"]
+    }
+  },
+  "include": ["./**/*.ts"],
+  "exclude": ["node_modules", "core/**/*.test.ts"]
+}

@@ -1,0 +1,21 @@
+<view class="page">
+  <view class="card">
+    <view class="title">补充食物</view>
+    <view class="muted">可扫包装条码，或拍营养成分表。提交后进入待审，不会立刻出现在搜索里。</view>
+    <view class="field">
+      <text>名称</text>
+      <input placeholder="例如某品牌酸奶" value="{{name}}" bindinput="onName" />
+    </view>
+    <view class="field">
+      <text>条码</text>
+      <text>{{barcode || '未扫'}}</text>
+    </view>
+    <view class="field">
+      <text>成分表照片</text>
+      <text>{{imageFileId ? '已选' : '未选'}}</text>
+    </view>
+    <button class="ghost" bindtap="scan">扫码</button>
+    <button class="ghost" bindtap="pickPhoto">拍营养成分表</button>
+    <button class="btn-primary" loading="{{saving}}" bindtap="submit">提交审核</button>
+  </view>
+</view>

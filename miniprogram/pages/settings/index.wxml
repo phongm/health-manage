@@ -1,0 +1,52 @@
+<view class="page">
+  <view class="card">
+    <view class="title">默认就餐场景</view>
+    <view class="row">
+      <view class="chip {{sceneDefault === 'takeout' ? 'on' : ''}}" data-value="takeout" bindtap="onScene">外卖</view>
+      <view class="chip {{sceneDefault === 'canteen' ? 'on' : ''}}" data-value="canteen" bindtap="onScene">食堂</view>
+      <view class="chip {{sceneDefault === 'homecook' ? 'on' : ''}}" data-value="homecook" bindtap="onScene">自己做</view>
+    </view>
+    <view class="muted">午餐覆盖</view>
+    <view class="row">
+      <view class="chip {{lunchScene === 'takeout' ? 'on' : ''}}" data-meal="lunch" data-value="takeout" bindtap="onMealScene">外卖</view>
+      <view class="chip {{lunchScene === 'canteen' ? 'on' : ''}}" data-meal="lunch" data-value="canteen" bindtap="onMealScene">食堂</view>
+      <view class="chip {{lunchScene === 'homecook' ? 'on' : ''}}" data-meal="lunch" data-value="homecook" bindtap="onMealScene">自己做</view>
+    </view>
+    <view class="muted">晚餐覆盖</view>
+    <view class="row">
+      <view class="chip {{dinnerScene === 'takeout' ? 'on' : ''}}" data-meal="dinner" data-value="takeout" bindtap="onMealScene">外卖</view>
+      <view class="chip {{dinnerScene === 'canteen' ? 'on' : ''}}" data-meal="dinner" data-value="canteen" bindtap="onMealScene">食堂</view>
+      <view class="chip {{dinnerScene === 'homecook' ? 'on' : ''}}" data-meal="dinner" data-value="homecook" bindtap="onMealScene">自己做</view>
+    </view>
+  </view>
+  <view class="card">
+    <view class="title">口味</view>
+    <view class="row wrap">
+      <view class="chip {{dietType === 'omnivore' ? 'on' : ''}}" data-value="omnivore" bindtap="onDiet">普通</view>
+      <view class="chip {{dietType === 'pescatarian' ? 'on' : ''}}" data-value="pescatarian" bindtap="onDiet">鱼素</view>
+      <view class="chip {{dietType === 'vegetarian' ? 'on' : ''}}" data-value="vegetarian" bindtap="onDiet">素食</view>
+      <view class="chip {{dietType === 'vegan' ? 'on' : ''}}" data-value="vegan" bindtap="onDiet">纯素</view>
+    </view>
+    <view class="row wrap">
+      <view class="chip {{spiceLevel === 0 ? 'on' : ''}}" data-value="0" bindtap="onSpice">不吃辣</view>
+      <view class="chip {{spiceLevel === 1 ? 'on' : ''}}" data-value="1" bindtap="onSpice">微辣</view>
+      <view class="chip {{spiceLevel === 2 ? 'on' : ''}}" data-value="2" bindtap="onSpice">中辣</view>
+      <view class="chip {{spiceLevel === 3 ? 'on' : ''}}" data-value="3" bindtap="onSpice">嗜辣</view>
+    </view>
+  </view>
+  <view class="card">
+    <view class="title">过敏原与忌口</view>
+    <view class="muted">不吃的肉类</view>
+    <view class="row wrap">
+      <view wx:for="{{meatOptions}}" wx:key="key" class="chip {{item.on ? 'on' : ''}}" data-key="{{item.key}}" bindtap="toggleMeat">{{item.label}}</view>
+    </view>
+    <view class="row wrap">
+      <view wx:for="{{allergenOptions}}" wx:key="key" class="chip {{item.on ? 'on' : ''}}" data-key="{{item.key}}" bindtap="toggleAllergen">{{item.label}}</view>
+    </view>
+    <view class="field">
+      <text>忌口</text>
+      <input value="{{avoidText}}" placeholder="香菜、内脏" bindinput="onAvoid" />
+    </view>
+  </view>
+  <button class="btn-primary" loading="{{saving}}" bindtap="save">保存</button>
+</view>
